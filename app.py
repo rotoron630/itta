@@ -195,8 +195,8 @@ def create_comment(post_id):
         db.session.commit()
     return redirect(url_for('post_detail', post_id=post_id))
 
+with app.app_context():
+    db.create_all()
+
 if __name__ == '__main__':
-    with app.app_context():
-        db.create_all()
-        db.session.commit()
     app.run(debug=True, port=5000)
